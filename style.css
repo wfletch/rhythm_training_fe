@@ -1,0 +1,23 @@
+.rythem-center{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.beat-box {
+    height: 208px;
+    width: 202px;
+    margin: 0px 12px;
+}
+.counter {
+    margin-top: 105px;
+    margin-left: 165px;
+}
+.midiStomp {
+    margin-top: 50px;
+    margin-right: 121px;
+}
+.midiStomp_pos {
+    display: flex;
+    justify-content: flex-end;
+}

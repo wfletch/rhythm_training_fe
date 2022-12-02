@@ -1,0 +1,27 @@
+{
+  "name": "rhythm_training_fe",
+  "version": "1.0.0",
+  "description": "TBA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wfletch/rhythm_training_fe.git"
+  },
+  "keywords": [
+    "boobies"
+  ],
+  "author": "more boobies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wfletch/rhythm_training_fe/issues"
+  },
+  "homepage": "https://github.com/wfletch/rhythm_training_fe#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "express": "^4.18.2",
+    "jquery": "^3.6.1"
+  }
+}
