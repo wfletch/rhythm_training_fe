@@ -7,8 +7,7 @@ function local_function() {
     // let text = "beat_";
     let num = data["key"];
     // let beat = text.concat(num);
-    // console.log(data);
-    console.log(beat);
+    console.log(data);
 
     $(".beat-box").each(function (index) {
       $(this).removeClass("btn-success");
