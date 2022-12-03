@@ -3,10 +3,11 @@ function local_function() {
     url: "/update",
     context: document.body,
   }).done(function (data) {
+    console.log("DONE?")
     // $(this).addClass("done");
     // let text = "beat_";
-    let num = data["key"];
-    // let beat = text.concat(num);
+    let num = data["current_beat"] + 1;
+    // let beat = texct.concat(num);
     console.log(data);
 
     $(".beat-box").each(function (index) {

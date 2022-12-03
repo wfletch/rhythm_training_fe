@@ -1,18 +1,31 @@
 const express = require('express');
 const path = require('path');
 const zmq = require("zeromq");
+const uuid = require('node-uuid');
 // const bootstrap = require('bootstrap');
 const app = express()
 const port = 3000
 var tick_count = 1
 var requester = zmq.socket('req');
 var system_state = {}
+var responses = {};
 requester.connect("tcp://127.0.0.1:5555");
 
-requester.on("message", function(reply) {
+requester.on("message", function(data) {
     console.log("The requester has been triggered")
-    system_state = reply.toString()
+    system_state = JSON.parse(data)
+    var msgId = data.id;
     console.log(system_state)
+    console.log(msgId)
+    var res = responses[system_state.id];
+    console.log(res)
+    if (res) {
+      // res.writeHead(200, { 'Content-Type': 'application/json' });
+      console.log("GOLD?")
+      res.json(system_state);
+      responses[msgId] = null;
+    } 
+   
     // requester.close();
     // process.exit(0);
 });
@@ -34,15 +47,13 @@ app.get('/', function(req, res) {
   // the state of all the data. fake till you make it.
 app.get('/update', function(req, res) {
   // Get the updated state from the ZMQ instance
-  requester.send("GET_SNAPSHOT"); 
+  
   // socket.send_string(message_mapping[str(msg.control)])
-    let anObject = {
-        "key": (tick_count%4) + 1,
-        "timestamp" : new Date().toLocaleString(),
-        "system_state": system_state
-    }
-    tick_count+=1;
-    res.json(anObject);
+    var msgId = uuid.v4();
+    var data = { id: msgId, message: 'GET_SNAPSHOT' };
+    console.log(msgId)
+    responses[msgId] = res;
+    requester.send(JSON.stringify(data));
 });
 
 // two things
